@@ -94,3 +94,14 @@ button:focus-visible,input:focus-visible{outline:3px solid #007bff;outline-offse
 .illustrated-flip .flip-front h3,.illustrated-flip .flip-back h3{margin:6px 0 10px}
 .illustrated-flip .flip-back p{margin:0;line-height:1.48}
 @media(max-width:800px){.illustrated-flip>.flip-card-art{height:150px}.illustrated-flip>.flip{height:330px}}
+
+/* Canonical storyboard copy determines layout and component height */
+.mentoring-page .comm-hero h1{font-size:clamp(38px,3.7vw,56px);line-height:1.04}
+.mentoring-page .illustrated-flip>.flip{height:380px}
+.mentoring-page .mode-panel{align-items:start}
+.mentoring-page .mode-panel p{line-height:1.6}
+.mentoring-page .exam{align-items:start}
+.mentoring-page .exam h2{font-size:clamp(28px,3vw,42px)}
+.exam-synthesis{margin:18px 0;color:#475569;line-height:1.6}
+.mentoring-page .exam h3{margin:20px 0 8px;font-size:17px}
+.detail-modal{overflow-y:auto}

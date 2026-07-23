@@ -36,28 +36,28 @@ const screens = [
   "Exam lens",
 ];
 const q1 = {
-  q: "A PM spends fifteen minutes after a tense meeting helping a team member improve how they handled one specific objection. Is this mentoring or coaching?",
+  q: "Scenario: A project manager spends fifteen minutes right after a tense meeting helping a team member figure out exactly what went wrong in how they handled one specific objection. Is this mentoring or coaching?",
   answers: [
-    "Mentoring—any development counts",
-    "Coaching—focused development of one specific skill",
-    "Neither—this is only feedback",
-    "Mentoring—because it followed a real event",
+    "Mentoring — any development moment counts as mentoring",
+    "Coaching — focused, in-the-moment development of one specific skill",
+    "Neither — this is just normal feedback, not development",
+    "Mentoring — because it happened after a real event, not in a training session",
   ],
   correct: 1,
-  yes: "Right—narrow, immediate, and tied to one skill is coaching.",
-  no: "Look at the scope and timeframe: narrow and immediate points to coaching.",
+  yes: "Right — narrow, immediate, tied to one specific skill in one specific moment. That's the coaching pattern. Mentoring would look more like an ongoing relationship built over months, not a fifteen-minute debrief.",
+  no: "Look at the scope and timeframe again — narrow and immediate points to one of the two terms specifically.",
 };
 const q2 = {
-  q: "A PM has personally mediated the same disagreement six times. What does this most likely indicate?",
+  q: "Scenario: A PM has personally mediated the same type of stakeholder disagreement six times over the course of a project. What does this most likely indicate?",
   answers: [
-    "The stakeholders are difficult",
-    "The PM is doing well by staying involved",
-    "A development opportunity was missed, so capability never changed",
-    "The project needs a less involved PM",
+    "The stakeholders involved are simply difficult people",
+    "The PM is doing their job well by staying closely involved every time",
+    "A coaching or mentoring opportunity has been missed — the underlying capability was never developed, so the same problem keeps returning",
+    "The project needs a different, less involved project manager",
   ],
   correct: 2,
-  yes: "Exactly—repetition is the signature of capability that was never developed.",
-  no: "Focus on what stayed unchanged after all six interventions: nobody learned to resolve it.",
+  yes: "Exactly — six repeats of the same problem is the signature of a missed development opportunity, not bad luck or difficult people. Solving it personally each time never changed anyone's underlying capability.",
+  no: "Think about what stays constant across all six instances — it isn't the people, it's the fact that nobody's capability changed after the first one.",
 };
 function Modal({ d, close, read }) {
   useEffect(() => {
@@ -134,7 +134,7 @@ function Quiz({ data, finish }) {
             {p === data.correct ? data.yes : data.no}
           </p>
         )}
-        {p === data.correct && (
+        {p !== null && (
           <button className="finish-check" onClick={finish}>
             Finish check <ArrowRight />
           </button>
@@ -267,33 +267,23 @@ function App() {
                 {page === 0 && (
                   <div className="comm-hero">
                     <div>
-                      <p className="eyebrow">
-                        LESSON 3.4.4 · ORGANIZE AND ACT ON MENTORING
-                        OPPORTUNITIES
-                      </p>
-                      <h1>
-                        Stop being the <em>only translator.</em>
-                      </h1>
+                      <p className="eyebrow">LESSON 3.4.4</p>
+                      <h1>Organize and Act on Mentoring Opportunities</h1>
                       <p>
-                        A translator who personally answers every question
-                        becomes indispensable—and the bottleneck at the same
-                        time. Teach two other people the language, and suddenly
-                        the room can function without the translator standing in
-                        it.
+                        A translator who personally answers every question in the room becomes indispensable — and becomes the bottleneck at the exact same time. Teach two other people in that room to speak the language, and suddenly the room can function without the translator standing in it.
                       </p>
                       <button
                         className="primary compact-cta"
                         onClick={() =>
                           show(0, {
-                            title: "Solve the next ten versions",
-                            kicker: "THE LEADERSHIP SHIFT",
+                            title: "Build the capability that prevents the next ten versions",
+                            kicker: "CLICK-TO-REVEAL",
                             image: translatorReveal,
-                            text: "Every earlier conversation in this task focused on something the PM does for the project: categorizing stakeholders, surfacing expectations, and facilitating alignment. This enabler asks a different question: what if, instead of solving every alignment problem yourself, you built someone else’s capability to solve it? A first-time product owner learning to prioritize, a junior liaison learning difficult conversations, or a functional manager learning why governance matters can become more capable through the PM’s leadership.",
-                            note: "The choice is not merely whether to solve today’s problem. It is whether to build the capability that prevents the next ten versions of it.",
+                            text: "Every conversation so far in this task has been about something the project manager does for the project — categorizing stakeholders, surfacing expectations, facilitating alignment. This final enabler asks a different question entirely: what if, instead of solving every alignment problem yourself, you built the capability for someone else to solve it? A first-time product owner who doesn't know how to prioritize a backlog. A junior franchise liaison who freezes in difficult conversations. A functional manager who doesn't yet understand why governance matters. Each is a moment where the PM can either solve the immediate problem — or build the capability that prevents the next ten versions of it.",
                           })
                         }
                       >
-                        Reveal the multiplier <ArrowRight />
+                        Reveal the development opportunity <ArrowRight />
                       </button>
                     </div>
                     <Art
@@ -305,31 +295,23 @@ function App() {
                 {page === 1 && (
                   <div className="calibration">
                     <div>
-                      <p className="eyebrow">WHAT THIS ENABLER ASKS</p>
-                      <h2>
-                        Move from managing people to <em>developing them.</em>
-                      </h2>
+                      <p className="eyebrow">WHAT THIS ENABLER ACTUALLY ASKS FOR</p>
+                      <h2>From managing stakeholders to developing them</h2>
                       <p>
-                        The fourth enabler of ECO People Task 5 asks the PM to
-                        organize and act on mentoring opportunities. A project
-                        manager is also a leader who builds capability—helping
-                        stakeholders and team members engage effectively, make
-                        better decisions, and eventually carry parts of the work
-                        themselves.
+                        Every enabler up to this point has widened the project manager's toolkit for managing stakeholders. This one widens the lens entirely — from managing them to developing them.
                       </p>
                       <button
                         className="primary compact-cta"
                         onClick={() =>
                           show(1, {
-                            title: "Empowered culture reduces dependence",
-                            kicker: "PMBOK® 8",
+                            title: "What the fourth enabler asks",
+                            kicker: "CLICK-TO-REVEAL",
                             image: empowered,
-                            text: "This connects directly to PMBOK® 8’s empowered-culture principle. Leaders who develop others create teams that are more capable, more committed, and less dependent on the PM as a single point of coordination. The network becomes stronger because knowledge, judgment, and confidence no longer live in only one person.",
-                            note: "Every stakeholder mentored into competence is a stakeholder who no longer needs the PM to broker every decision on their behalf.",
+                            text: "The fourth enabler of ECO People Task 5 asks the project manager to organize and act on mentoring opportunities. A project manager is also a leader who builds capability — mentoring and coaching stakeholders and team members so they can engage more effectively, make better decisions, and eventually carry parts of the work themselves. This connects directly to PMBOK® 8's empowered-culture principle: leaders who develop others create teams that are more capable, more committed, and less dependent on the project manager as a single point of coordination. Every stakeholder you mentor into competence is a stakeholder who no longer needs you to broker every decision on their behalf.",
                           })
                         }
                       >
-                        Reveal the leadership rule <ArrowRight />
+                        Reveal what the enabler asks <ArrowRight />
                       </button>
                     </div>
                     <Art
@@ -341,11 +323,9 @@ function App() {
                 {page === 2 && (
                   <div className="wide">
                     <p className="eyebrow">MENTORING VS. COACHING</p>
-                    <h2>
-                      Both build capability. They work at different scales.
-                    </h2>
+                    <h2>Mentoring vs. Coaching</h2>
                     <p className="lede">
-                      Flip both cards to see the exam distinction.
+                      These two words get used almost interchangeably in everyday conversation — but they describe genuinely different kinds of development, and the exam draws the distinction deliberately. Flip both cards to see it.
                     </p>
                     <div className="flip-grid">
                       {[
@@ -353,13 +333,13 @@ function App() {
                           name: "Mentoring",
                           icon: TrendingUp,
                           image: mentoringCard,
-                          text: "The longer-term sharing of experience and perspective. It cultivates judgment, confidence, and overall capability by exposing someone to how an experienced practitioner thinks through ambiguous situations—not merely one isolated skill.",
+                          text: "The longer-term sharing of experience and perspective — helping someone build judgment over time by exposing them to how an experienced practitioner thinks through ambiguous situations. Less about a single skill, more about cultivating overall capability and confidence.",
                         },
                         {
                           name: "Coaching",
                           icon: Target,
                           image: coachingCard,
-                          text: "Focused development of one specific skill—such as running a difficult conversation or structuring a prioritization decision—often in the moment or immediately after the event.",
+                          text: "The focused development of a specific skill — helping someone get better at one particular thing, like running a difficult conversation or structuring a prioritization decision, often in the moment or shortly after it happens.",
                         },
                       ].map((f, i) => {
                         const I = f.icon;
@@ -390,12 +370,7 @@ function App() {
                     </div>
                     {flips.length === 2 && (
                       <div className="backing">
-                        Both build capability beyond the immediate task. Neither
-                        does the work for the person. Opportunities often look
-                        like ordinary problems: coaching a first-time product
-                        owner on backlog prioritization, helping a junior
-                        liaison run an alignment conversation, or guiding a
-                        functional manager through governance and escalation.
+                        Both build capability beyond the immediate task. Neither is about doing the work for the person — both are about helping them become someone who can do it themselves. Mentoring opportunities show up constantly in stakeholder work, often disguised as ordinary problems rather than development moments: coaching a first-time product owner on backlog prioritization, helping a junior franchise liaison learn to run their own alignment conversations, guiding a functional manager new to projects through why governance and escalation actually matter.
                       </div>
                     )}
                     {flips.length === 2 && !qOne && (
@@ -411,9 +386,9 @@ function App() {
                 {page === 3 && (
                   <div className="wide capacity">
                     <p className="eyebrow">WHY THIS MULTIPLIES CAPACITY</p>
-                    <h2>Rescue creates a loop. Coaching creates reach.</h2>
+                    <h2>Why This Multiplies Your Capacity</h2>
                     <p className="lede">
-                      Toggle between two versions of the same junior liaison.
+                      Here's the part that separates this enabler from ordinary problem-solving. Every stakeholder conversation a PM personally handles is one conversation. Toggle between two versions of the same junior liaison to see the difference mentoring actually makes.
                     </p>
                     <div className="mode-tabs">
                       <button
@@ -453,8 +428,8 @@ function App() {
                           </h3>
                           <p>
                             {mode === "rescued"
-                              ? "A liaison rescued whenever conflict arises learns exactly one lesson: escalation is the answer. The underlying skill never develops, so the next conflict—and the one after that—returns to the PM’s desk."
-                              : "A liaison coached through their own alignment conversation learns they can resolve it. When a similar situation returns, the PM no longer needs to be in the room. Capability now exists independently—a multiplier, not a one-time fix."}
+                              ? "A junior franchise liaison who is rescued by the project manager every time a conflict arises learns exactly one lesson: escalation is the answer. The underlying skill never develops. The next conflict still lands back on the project manager's desk — and the one after that, and the one after that."
+                              : "A junior franchise liaison who is coached through running their own alignment conversation learns something different: that they are capable of resolving it themselves. The next time a similar situation arises, they don't need the project manager in the room at all. The capability now exists independent of the PM's direct involvement — a genuine multiplier, not just a one-time fix."}
                           </p>
                         </div>
                       </motion.div>
@@ -476,48 +451,39 @@ function App() {
                       alt="A fully distributed network with no dominant central node"
                     />
                     <div>
-                      <p className="eyebrow">EXAM LENS · LASTING CAPABILITY</p>
-                      <h2>Develop capability, not just today’s solution.</h2>
+                      <p className="eyebrow">SCREEN 5 · SYNTHESIS (EXAM LENS)</p>
+                      <h2>This closes out all four enablers of ECO People Task 5</h2>
                       <p className="exam-intro">
-                        Mentoring and coaching are not extras layered on
-                        stakeholder management—they multiply engagement
-                        capacity. Solving the problem personally changes today.
-                        Developing someone to lead the conversation, structure
-                        the decision, or navigate governance changes what the
-                        project can handle tomorrow.
+                        This closes out all four enablers of ECO People Task 5 — and the idea underneath this last one is worth carrying forward into everything the earlier three set up.
                       </p>
                       <button
                         className="primary compact-cta"
                         onClick={() => setDone(true)}
                       >
                         {done
-                          ? "Capability distributed"
-                          : "Reveal the exam rules"}
+                          ? "Synthesis revealed"
+                          : "Reveal the synthesis"}
                         <Sparkles />
                       </button>
                       {done && (
+                        <>
+                        <p className="exam-synthesis">Mentoring and coaching aren't extras layered on top of stakeholder management — they multiply engagement capacity. Every time a project manager resolves a stakeholder's problem instead of developing their capability to resolve it themselves, that same problem is likely to return, because nothing about the stakeholder's competence has actually changed. Develop a stakeholder to lead their own alignment conversations, structure their own prioritization decisions, or navigate their own governance questions — and you've built capability, not just solved today's problem.</p>
+                        <h3>Exam-relevant enablers to remember:</h3>
                         <ul>
                           <li>
-                            Mentoring builds judgment over time; coaching
-                            develops a focused skill.
+                            Mentoring = longer-term judgment-building; Coaching = focused, in-the-moment skill development — both build capability, neither does the work for the person
                           </li>
                           <li>
-                            Both build capability and neither does the work for
-                            the person.
+                            The empowered-culture principle: developed stakeholders reduce dependence on the PM as a single point of coordination
                           </li>
                           <li>
-                            Repeated problems often signal missed development
-                            opportunities.
+                            A repeated problem is often a missed development opportunity, not bad luck
                           </li>
                           <li>
-                            Developed stakeholders reduce dependence on the PM.
-                          </li>
-                          <li>
-                            ECO People Task 5 closes the loop: categorize,
-                            identify expectations, facilitate alignment, and
-                            mentor for lasting capability.
+                            This completes ECO People Task 5's four enablers: categorize, identify expectations, facilitate alignment, and mentor for lasting capability
                           </li>
                         </ul>
+                        </>
                       )}
                     </div>
                   </div>
