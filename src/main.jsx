@@ -19,6 +19,7 @@ import {
   X,
 } from "lucide-react";
 import "./styles.css";
+import SynthesisModal from "./SynthesisModal";
 import translator from "./assets/illustrations/translator-capability.png";
 import network from "./assets/illustrations/hub-to-network.png";
 import compare from "./assets/illustrations/mentoring-vs-coaching.png";
@@ -158,7 +159,8 @@ function App() {
     [mode, setMode] = useState(null),
     [qTwo, setQTwo] = useState(false),
     [quiz, setQuiz] = useState(null),
-    [done, setDone] = useState(false);
+    [done, setDone] = useState(false),
+    [synthesisOpen, setSynthesisOpen] = useState(false);
   const can = [
     revealed[0],
     revealed[1],
@@ -458,33 +460,12 @@ function App() {
                       </p>
                       <button
                         className="primary compact-cta"
-                        onClick={() => setDone(true)}
+                        disabled={done}
+                        onClick={() => setSynthesisOpen(true)}
                       >
-                        {done
-                          ? "Synthesis revealed"
-                          : "Reveal the synthesis"}
+                        {done ? "Synthesis reviewed" : "Reveal the synthesis"}
                         <Sparkles />
                       </button>
-                      {done && (
-                        <>
-                        <p className="exam-synthesis">Mentoring and coaching aren't extras layered on top of stakeholder management — they multiply engagement capacity. Every time a project manager resolves a stakeholder's problem instead of developing their capability to resolve it themselves, that same problem is likely to return, because nothing about the stakeholder's competence has actually changed. Develop a stakeholder to lead their own alignment conversations, structure their own prioritization decisions, or navigate their own governance questions — and you've built capability, not just solved today's problem.</p>
-                        <h3>Exam-relevant enablers to remember:</h3>
-                        <ul>
-                          <li>
-                            Mentoring = longer-term judgment-building; Coaching = focused, in-the-moment skill development — both build capability, neither does the work for the person
-                          </li>
-                          <li>
-                            The empowered-culture principle: developed stakeholders reduce dependence on the PM as a single point of coordination
-                          </li>
-                          <li>
-                            A repeated problem is often a missed development opportunity, not bad luck
-                          </li>
-                          <li>
-                            This completes ECO People Task 5's four enablers: categorize, identify expectations, facilitate alignment, and mentor for lasting capability
-                          </li>
-                        </ul>
-                        </>
-                      )}
                     </div>
                   </div>
                 )}
@@ -522,6 +503,25 @@ function App() {
             close={() => setDetail(null)}
             read={() => setDetail(null)}
           />
+        )}
+        {synthesisOpen && (
+          <SynthesisModal
+            title="Develop capability, not dependence"
+            onClose={() => setSynthesisOpen(false)}
+            onReviewed={() => {
+              setDone(true);
+              setSynthesisOpen(false);
+            }}
+          >
+            <p>Mentoring and coaching aren't extras layered on top of stakeholder management — they multiply engagement capacity. Every time a project manager resolves a stakeholder's problem instead of developing their capability to resolve it themselves, that same problem is likely to return, because nothing about the stakeholder's competence has actually changed. Develop a stakeholder to lead their own alignment conversations, structure their own prioritization decisions, or navigate their own governance questions — and you've built capability, not just solved today's problem.</p>
+            <h4>Exam-relevant enablers to remember:</h4>
+            <ul>
+              <li>Mentoring = longer-term judgment-building; Coaching = focused, in-the-moment skill development — both build capability, neither does the work for the person</li>
+              <li>The empowered-culture principle: developed stakeholders reduce dependence on the PM as a single point of coordination</li>
+              <li>A repeated problem is often a missed development opportunity, not bad luck</li>
+              <li>This completes ECO People Task 5's four enablers: categorize, identify expectations, facilitate alignment, and mentor for lasting capability</li>
+            </ul>
+          </SynthesisModal>
         )}
       </AnimatePresence>
       {quiz && (
