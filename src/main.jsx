@@ -20,15 +20,17 @@ import {
 } from "lucide-react";
 import "./styles.css";
 import SynthesisModal from "./SynthesisModal";
-import translator from "./assets/illustrations/translator-capability.png";
-import network from "./assets/illustrations/hub-to-network.png";
-import compare from "./assets/illustrations/mentoring-vs-coaching.png";
-import rescue from "./assets/illustrations/rescued-vs-coached.png";
-import distributed from "./assets/illustrations/distributed-capability.png";
-import translatorReveal from "./assets/illustrations/translator-reveal.png";
-import empowered from "./assets/illustrations/empowered-culture.png";
-import mentoringCard from "./assets/illustrations/mentoring-card.png";
-import coachingCard from "./assets/illustrations/coaching-card.png";
+import { useLessonAudio } from "../../shared/useLessonAudio";
+import { IllustrationPlayer } from "./components/IllustrationPlayer";
+import translator from "./assets/illustrations/translator-capability.svg?raw";
+import network from "./assets/illustrations/hub-to-network.svg?raw";
+import compare from "./assets/illustrations/mentoring-vs-coaching.svg?raw";
+import rescue from "./assets/illustrations/rescued-vs-coached.svg?raw";
+import distributed from "./assets/illustrations/distributed-capability.svg?raw";
+import translatorReveal from "./assets/illustrations/translator-reveal.svg?raw";
+import empowered from "./assets/illustrations/empowered-culture.svg?raw";
+import mentoringCard from "./assets/illustrations/mentoring-card.svg?raw";
+import coachingCard from "./assets/illustrations/coaching-card.svg?raw";
 const screens = [
   "Build capability",
   "What it asks",
@@ -85,7 +87,7 @@ function Modal({ d, close, read }) {
         <button className="drawer-close" onClick={close}>
           <X />
         </button>
-        <img className="drawer-illustration" src={d.image} alt="" />
+        <IllustrationPlayer className="drawer-illustration" svg={d.image} />
         <p className="mini-label">{d.kicker}</p>
         <h3>{d.title}</h3>
         <p>{d.text}</p>
@@ -145,8 +147,8 @@ function Quiz({ data, finish }) {
     document.body,
   );
 }
-const Art = ({ src, alt, className = "" }) => (
-  <img className={`custom-lesson-art ${className}`} src={src} alt={alt} />
+const Art = ({ src, className = "" }) => (
+  <IllustrationPlayer className={`custom-lesson-art ${className}`} svg={src} />
 );
 function App() {
   const [page, setPage] = useState(0),
@@ -161,6 +163,7 @@ function App() {
     [quiz, setQuiz] = useState(null),
     [done, setDone] = useState(false),
     [synthesisOpen, setSynthesisOpen] = useState(false);
+  useLessonAudio(sound);
   const can = [
     revealed[0],
     revealed[1],
@@ -279,7 +282,6 @@ function App() {
                         onClick={() =>
                           show(0, {
                             title: "Build the capability that prevents the next ten versions",
-                            kicker: "CLICK-TO-REVEAL",
                             image: translatorReveal,
                             text: "Every conversation so far in this task has been about something the project manager does for the project — categorizing stakeholders, surfacing expectations, facilitating alignment. This final enabler asks a different question entirely: what if, instead of solving every alignment problem yourself, you built the capability for someone else to solve it? A first-time product owner who doesn't know how to prioritize a backlog. A junior franchise liaison who freezes in difficult conversations. A functional manager who doesn't yet understand why governance matters. Each is a moment where the PM can either solve the immediate problem — or build the capability that prevents the next ten versions of it.",
                           })
@@ -307,7 +309,6 @@ function App() {
                         onClick={() =>
                           show(1, {
                             title: "What the fourth enabler asks",
-                            kicker: "CLICK-TO-REVEAL",
                             image: empowered,
                             text: "The fourth enabler of ECO People Task 5 asks the project manager to organize and act on mentoring opportunities. A project manager is also a leader who builds capability — mentoring and coaching stakeholders and team members so they can engage more effectively, make better decisions, and eventually carry parts of the work themselves. This connects directly to PMBOK® 8's empowered-culture principle: leaders who develop others create teams that are more capable, more committed, and less dependent on the project manager as a single point of coordination. Every stakeholder you mentor into competence is a stakeholder who no longer needs you to broker every decision on their behalf.",
                           })
@@ -347,7 +348,7 @@ function App() {
                         const I = f.icon;
                         return (
                           <div className="illustrated-flip" key={f.name}>
-                          <img className="flip-card-art" src={f.image} alt="" />
+                          <IllustrationPlayer className="flip-card-art" svg={f.image} />
                           <button
                             className={`flip ${flips.includes(i) ? "flipped" : ""}`}
                             onClick={() =>
@@ -453,7 +454,7 @@ function App() {
                       alt="A fully distributed network with no dominant central node"
                     />
                     <div>
-                      <p className="eyebrow">SCREEN 5 · SYNTHESIS (EXAM LENS)</p>
+                      <p className="eyebrow">SYNTHESIS (EXAM LENS)</p>
                       <h2>This closes out all four enablers of ECO People Task 5</h2>
                       <p className="exam-intro">
                         This closes out all four enablers of ECO People Task 5 — and the idea underneath this last one is worth carrying forward into everything the earlier three set up.
